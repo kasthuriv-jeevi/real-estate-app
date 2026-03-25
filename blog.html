@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - RealEstate Chennai</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .navbar {
+            background: rgba(30, 58, 138, 0.92) !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+        }
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, #c084fc, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            transition: all 0.3s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #c084fc !important;
+            text-shadow: 0 0 12px rgba(192,132,252,0.8);
+        }
+        .blog-header {
+            position: relative;
+            height: 70vh;          /* பெரிய header */
+            min-height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
+                        url('https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+        }
+        .blog-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.7));
+        }
+        .blog-title {
+            font-size: 4.8rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #c084fc, #a78bfa, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.6);
+            z-index: 2;
+        }
+        .blog-subtitle {
+            font-size: 1.6rem;
+            max-width: 900px;
+            margin: 0 auto;
+            opacity: 0.95;
+            z-index: 2;
+        }
+        .blog-card {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.45s ease;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+        }
+        .blog-card:hover {
+            transform: translateY(-18px) scale(1.03);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+        }
+        .blog-img {
+            height: 300px;         /* இப்போ பெருசா தெரியும் */
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        .blog-card:hover .blog-img {
+            transform: scale(1.18);
+        }
+        .card-body {
+            padding: 2rem;
+        }
+        .card-title {
+            font-weight: 700;
+            font-size: 1.7rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        .card-text {
+            color: rgba(255,255,255,0.88);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .read-more-btn {
+            background: linear-gradient(45deg, #a78bfa, #c084fc);
+            color: white;
+            border: none;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(167,139,250,0.45);
+        }
+        .read-more-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(167,139,250,0.65);
+            background: linear-gradient(45deg, #c084fc, #a78bfa);
+        }
+        .date-badge {
+            background: rgba(255,255,255,0.22);
+            color: white;
+            padding: 0.6rem 1.3rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        .modal-content {
+            background: rgba(30, 58, 138, 0.96);
+            color: white;
+            border-radius: 24px;
+            border: none;
+            backdrop-filter: blur(12px);
+        }
+        .modal-header {
+            background: linear-gradient(90deg, #c084fc, #a78bfa);
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">RealEstate</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="properties.html">Properties</a></li>
+                    <li class="nav-item"><a class="nav-link" href="license.html">license</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Big Header with large image -->
+    <header class="blog-header">
+        <div class="blog-overlay"></div>
+        <div class="position-relative z-2">
+            <h1 class="blog-title animate__animated animate__fadeInDown">Real Estate Blog</h1>
+            <p class="blog-subtitle animate__animated animate__fadeInUp">Latest trends, expert tips & market insights for Chennai real estate in 2026</p>
+        </div>
+    </header>
+
+    <!-- Blog Cards -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-5">
+                <!-- Card 1 -->
+                <div class="col-lg-4">
+                    <div class="blog-card animate__animated animate__fadeInUp">
+                        <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" class="blog-img" alt="Growing Areas">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="date-badge">Feb 08, 2026</span>
+                            </div>
+                            <h5 class="card-title">Top 5 Growing Areas in Chennai 2026</h5>
+                            <p class="card-text">OMR, Anna Nagar, ECR are booming with new IT parks, metro extensions, and luxury developments...</p>
+                            <button class="read-more-btn mt-3"
+                                    data-bs-toggle="modal" data-bs-target="#blogModal"
+                                    data-title="Top 5 Growing Areas in Chennai 2026"
+                                    data-date="Feb 08, 2026"
+                                    data-content="OMR (Old Mahabalipuram Road), Anna Nagar, ECR, Perungudi, and Sholinganallur are the top 5 fastest-growing real estate areas in Chennai for 2026. With metro phase 2, new IT corridors, and luxury residential projects, property prices have risen 30-50% in these zones. Investors are focusing on these areas for high returns and rental yield. ECR offers sea-view villas, while OMR has affordable apartments near tech parks.">
+                                Read More →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-lg-4">
+                    <div class="blog-card animate__animated animate__fadeInUp" style="animation-delay: 0.15s;">
+                        <img src="https://images.pexels.com/photos/7031409/pexels-photo-7031409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" class="blog-img" alt="ECR">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="date-badge">Jan 15, 2026</span>
+                            </div>
+                            <h5 class="card-title">Why ECR is the Next Luxury Hotspot</h5>
+                            <p class="card-text">East Coast Road is becoming Chennai's premium beachfront destination...</p>
+                            <button class="read-more-btn mt-3"
+                                    data-bs-toggle="modal" data-bs-target="#blogModal"
+                                    data-title="Why ECR is the Next Luxury Hotspot"
+                                    data-date="Jan 15, 2026"
+                                    data-content="ECR (East Coast Road) has seen massive growth in luxury villas and gated communities. With new resorts, beachfront developments, and improved connectivity, it's attracting HNIs and NRIs. Prices have jumped 40% in the last year. Features include private beaches, infinity pools, and sea views. Perfect for weekend homes or investment.">
+                                Read More →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-lg-4">
+                    <div class="blog-card animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+                        <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" class="blog-img" alt="Choose Property">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="date-badge">Dec 20, 2025</span>
+                            </div>
+                            <h5 class="card-title">How to Choose the Right Property in 2026</h5>
+                            <p class="card-text">Tips for first-time buyers in Chennai's competitive market...</p>
+                            <button class="read-more-btn mt-3"
+                                    data-bs-toggle="modal" data-bs-target="#blogModal"
+                                    data-title="How to Choose the Right Property in 2026"
+                                    data-date="Dec 20, 2025"
+                                    data-content="Buying a home in Chennai in 2026? Focus on location, builder reputation, RERA approval, and future growth areas. Check for metro connectivity, schools, hospitals, and green spaces. Avoid overpaying in saturated areas. Use expert advice and home loan calculators to make smart decisions.">
+                                Read More →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="blogModal" tabindex="-1" aria-labelledby="blogModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark text-white border-0 shadow-xl rounded-4">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold fs-4" id="blogModalLabel"></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted mb-3 fw-bold" id="blogDate"></p>
+                    <p id="blogContent" class="lead fs-5"></p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-outline-light px-5 py-2" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-0">© 2026 RealEstate Chennai. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Modal Logic (no preventDefault needed) -->
+    <script>
+        document.querySelectorAll('.read-more-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const title = this.getAttribute('data-title') || 'Blog Post';
+                const date = this.getAttribute('data-date') || 'Date';
+                const content = this.getAttribute('data-content') || 'No content available.';
+
+                document.getElementById('blogModalLabel').textContent = title;
+                document.getElementById('blogDate').textContent = date;
+                document.getElementById('blogContent').textContent = content;
+            });
+        });
+    </script>
+</body>
+</html>

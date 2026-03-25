@@ -1,0 +1,145 @@
+/* Animated hero background (kept from previous) */
+.hero {
+    background: linear-gradient(-45deg, #1e3c72, #2a5298, #00b4d8, #0077b6);
+    background-size: 300% 300%;
+    animation: gradientAnimation 18s ease infinite;
+    min-height: 80vh;
+    display: flex;
+    padding-top: 100px;
+    align-items: center;
+    position: relative;
+    color: white;
+    text-align: center;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.08) 0%, transparent 60%);
+    animation: subtleFloat 25s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes subtleFloat {
+    0%   { transform: translate(0, 0) scale(1);   opacity: 0.35; }
+    100% { transform: translate(8%, 12%) scale(1.15); opacity: 0.15; }
+}
+
+/* Heading & subtitle styling */
+.hero-heading {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 3rem;
+    opacity: 0.95;
+}
+
+/* Search form container */
+.search-container {
+    max-width: 2000px;
+    margin: 0 auto;
+}
+
+.form-control-lg, .form-select-lg {
+    height: 58px;
+    font-size: 1.1rem;
+}
+
+/* Card enhancements (kept & improved) */
+.card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    transition: all 0.35s ease;
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+}
+
+.card-img-top {
+    height: 240px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.08);
+}
+body {
+    padding-top: 80px !important;   /* Start with 80px – safe for most Bootstrap navbars */
+}
+
+/* If your navbar is shorter/taller, adjust here */
+@media (max-width: 991.98px) {
+    body {
+        padding-top: 56px !important;   /* Collapsed mobile navbar is usually ~56px */
+    }
+}
+/* styles.css – basic fixes for cards & images */
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* image crop fit  */
+}
+
+.read-more-btn {
+    margin-top: 10px;
+}
+/* Hero Section – Professional & Animated */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+                url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600') center/cover no-repeat;
+    min-height: 90vh;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.hero .lead {
+    font-size: 1.5rem;
+    font-weight: 400;
+    opacity: 0.95;
+}
+
+/* Animation on load */
+.animate__fadeInUp {
+    animation-duration: 1.2s;
+    animation-delay: 0.3s;
+}
+
+/* Button hover effect */
+.btn-success:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}

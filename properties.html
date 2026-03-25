@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties - RealEstate Chennai</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+         body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: black;
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .navbar {
+            background: rgba(30, 58, 138, 0.92) !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+        }
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, #c084fc, #a78bfa);
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            transition: all 0.3s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #c084fc !important;
+            text-shadow: 0 0 12px rgba(192,132,252,0.8);
+        }
+        body {
+            background: linear-gradient(135deg, #f0f4ff, #e6f2ff);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Hero Section - same look as contact page / home page */
+        .hero {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            background-image: url('images/home-hero-house.jpg');  /* ← CHANGE THIS to your actual home/contact background image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);  /* same darkness as contact page */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            max-width: 900px;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+        }
+
+        .hero-content p {
+            font-size: 1.7rem;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 60vh;
+            }
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .hero-content p {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Your original styles - unchanged */
+        .container { max-width: 1240px; }
+        .page-title {
+            font-weight: 800;
+            background: linear-gradient(90deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+        .filter-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 30px rgba(37,99,235,0.12);
+            border: 1px solid rgba(37,99,235,0.08);
+        }
+        .property-card {
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+        .property-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 45px rgba(37,99,235,0.22);
+        }
+        .card-img-top {
+            height: 260px;
+            width: 100%;
+            object-fit: contain;
+            object-position: center;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 15px;
+            transition: transform 0.5s ease;
+        }
+        .property-card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+        .card-location {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+        .card-price {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #3b82f6, #2563eb);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+        .btn-whatsapp {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white !important;
+            border: none;
+            padding: 1rem 1.8rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(37,213,102,0.35);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .btn-whatsapp:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(37,213,102,0.5);
+            background: linear-gradient(45deg, #20b858, #0e7a6d);
+        }
+        .modal-content {
+            border-radius: 20px;
+            border: none;
+            overflow: hidden;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.25);
+        }
+        .modal-header {
+            background: linear-gradient(90deg, #25D366, #128C7E);
+            color: white;
+            border-bottom: none;
+        }
+        .property-info {
+            background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+        }
+        .no-results {
+            color: #6b7280;
+            font-size: 1.25rem;
+            text-align: center;
+            padding: 5rem 0;
+        }
+    </style>
+</head>
+<body style="padding-top: 80px !important;">
+
+    <!-- Navbar - fixed-top so it stays on top -->
+    <nav class="navbar navbar-expand-lg navbar-dark shadow fixed-top" style="background: linear-gradient(90deg, #1e40af, #3b82f6);">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4" href="index.html">RealEstate</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="properties.html">Properties</a></li>
+                    <li class="nav-item"><a class="nav-link" href="license.html">License</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - same as contact / home page -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="animate__animated animate__fadeInDown">Premium Properties</h1>
+            <p class="animate__animated animate__fadeInUp">Discover your dream home in Chennai – premium houses, apartments, villas & plots in prime locations</p>
+        </div>
+    </section>
+
+    <!-- Your original main content -->
+    <section class="py-5">
+        <div class="container">
+            <h1 class="page-title text-center mb-5 animate__animated animate__fadeIn">Premium Properties in Chennai</h1>
+
+            <!-- Filter -->
+            <div class="filter-card mx-auto" style="max-width: 800px;">
+                <div class="row g-3 align-items-end">
+                    <div class="col-md-5">
+                        <label class="form-label fw-medium text-primary">Location</label>
+                        <input type="text" id="filterLocation" class="form-control form-control-lg shadow-sm" placeholder="Anna Nagar, OMR, ECR...">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-medium text-primary">BHK Type</label>
+                        <select id="filterBhk" class="form-select form-select-lg shadow-sm">
+                            <option value="">All BHK</option>
+                            <option value="1">1 BHK</option>
+                            <option value="2">2 BHK</option>
+                            <option value="3">3 BHK</option>
+                            <option value="4">4+ BHK</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <button id="applyFilter" class="btn btn-primary w-100 py-3 fw-bold shadow">FILTER</button>
+                        <button id="clearFilter" class="btn btn-outline-primary w-100 mt-2">CLEAR</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Properties Grid -->
+            <div class="row g-4 mt-5" id="propertiesGrid"></div>
+
+            <div id="noResults" class="no-results d-none text-center py-5">
+                <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                <h4>No properties found</h4>
+                <p>Try different filters or clear selection</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-0">© 2026 RealEstate Chennai. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Attractive WhatsApp Modal -->
+    <div class="modal fade" id="propertyModal" tabindex="-1" aria-labelledby="propertyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-xl rounded-4 overflow-hidden">
+                <div class="modal-header border-0 pb-0" style="background: linear-gradient(90deg, #25D366, #128C7E);">
+                    <h5 class="modal-title fw-bold fs-4 text-white" id="propertyModalLabel"></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body pt-3 bg-white">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <img id="modalImage" class="img-fluid rounded-4 shadow-lg" alt="Property" style="height: 340px; object-fit: cover; width: 100%;">
+                        </div>
+                        <div class="col-md-6 d-flex flex-column justify-content-between">
+                            <div>
+                                <h4 id="modalTitle" class="fw-bold mb-3 text-dark"></h4>
+                                <div class="property-info rounded-3 p-4 mb-4 shadow-sm" style="background: linear-gradient(135deg, #f0fdf4, #ecfdf5); border: 1px solid #d1fae5;">
+                                    <p class="mb-2"><i class="fas fa-map-marker-alt text-success me-2"></i><strong>Location:</strong> <span id="modalLocation"></span></p>
+                                    <p class="mb-2"><i class="fas fa-home text-success me-2"></i><strong>BHK:</strong> <span id="modalBhk"></span></p>
+                                    <p class="mb-3"><i class="fas fa-rupee-sign text-success me-2"></i><strong>Price:</strong> <span id="modalPrice"></span></p>
+                                    <p class="mb-0"><i class="fas fa-comment-dots text-success me-2"></i><strong>Description:</strong> <span id="modalDesc"></span></p>
+                                </div>
+                            </div>
+                            <a id="whatsappBtn" href="#" target="_blank" class="btn-whatsapp w-100 py-3 mt-3">
+                                <i class="fab fa-whatsapp fa-2x"></i> Message on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Properties Data
+        const propertiesData = [
+            { id: 1, title: "Luxury 2 BHK Apartment", location: "Velachery", bhk: "2", price: "₹78 Lakhs", desc: "Gym, pool, prime location, modern interiors", image: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" },
+            { id: 2, title: "Cozy 3 BHK Independent House", location: "Anna Nagar West", bhk: "3", price: "₹1.45 Cr", desc: "Garden, parking, family friendly, near metro", image: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" },
+            { id: 3, title: "Premium 4 BHK Villa", location: "East Coast Road (ECR)", bhk: "4", price: "₹3.8 Cr", desc: "Sea view, private pool, gated community", image: "https://images.pexels.com/photos/7031409/pexels-photo-7031409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" },
+            { id: 4, title: "Modern 3 BHK Apartment", location: "OMR", bhk: "3", price: "₹1.10 Cr", desc: "Near IT hubs, smart home features", image: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" },
+            { id: 5, title: "Spacious 2 BHK Flat", location: "Anna Nagar", bhk: "2", price: "₹65 Lakhs", desc: "Well ventilated, prime residential area", image: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" },
+            { id: 6, title: "Elegant 3 BHK Villa", location: "ECR", bhk: "3", price: "₹2.2 Cr", desc: "Beachfront location, landscaped garden", image: "https://images.pexels.com/photos/7031409/pexels-photo-7031409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" },
+            { id: 7, title: "Luxury 4 BHK Villa", location: "Palavakkam", bhk: "4", price: "₹4.2 Cr", desc: "Sea-facing, premium finishes", image: "https://images.pexels.com/photos/7031409/pexels-photo-7031409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" },
+            { id: 8, title: "Affordable 3 BHK House", location: "Madipakkam", bhk: "3", price: "₹95 Lakhs", desc: "Family-friendly independent house", image: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" }
+        ];
+
+        const grid = document.getElementById('propertiesGrid');
+        const noResults = document.getElementById('noResults');
+
+        function renderProperties(data) {
+            grid.innerHTML = '';
+            if (data.length === 0) {
+                noResults.classList.remove('d-none');
+                return;
+            }
+            noResults.classList.add('d-none');
+            data.forEach(prop => {
+                const whatsappLink = `https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20${encodeURIComponent(prop.title)}%20in%20${encodeURIComponent(prop.location)}%20-%20${encodeURIComponent(prop.bhk)}%20BHK%20for%20${encodeURIComponent(prop.price)}`;
+                const card = `
+                    <div class="col-lg-4 col-md-6">
+                        <div class="property-card animate__animated animate__fadeInUp">
+                            <img src="${prop.image}" class="card-img-top" alt="${prop.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/800x500/cccccc/555555?text=Property'">
+                            <div class="card-body">
+                                <h5 class="card-title">${prop.title}</h5>
+                                <p class="card-location"><i class="fas fa-map-marker-alt me-1"></i>${prop.location}</p>
+                                <p class="card-price">${prop.bhk} BHK • ${prop.price}</p>
+                                <button class="btn btn-primary w-100 view-details-btn"
+                                        data-bs-toggle="modal" data-bs-target="#propertyModal"
+                                        data-title="${prop.title}"
+                                        data-location="${prop.location}"
+                                        data-bhk="${prop.bhk} BHK"
+                                        data-price="${prop.price}"
+                                        data-desc="${prop.desc}"
+                                        data-image="${prop.image}"
+                                        data-whatsapp="${whatsappLink}">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+        }
+
+        // Initial render
+        renderProperties(propertiesData);
+
+        // Filter logic
+        document.getElementById('applyFilter').addEventListener('click', () => {
+            const loc = document.getElementById('filterLocation').value.toLowerCase().trim();
+            const bhk = document.getElementById('filterBhk').value;
+            const filtered = propertiesData.filter(p => {
+                const matchLoc = !loc || p.location.toLowerCase().includes(loc);
+                const matchBhk = !bhk || p.bhk === bhk;
+                return matchLoc && matchBhk;
+            });
+            renderProperties(filtered);
+        });
+
+        document.getElementById('clearFilter').addEventListener('click', () => {
+            document.getElementById('filterLocation').value = '';
+            document.getElementById('filterBhk').value = '';
+            renderProperties(propertiesData);
+        });
+
+        // WhatsApp Modal Setup
+        document.addEventListener('click', e => {
+            if (e.target.classList.contains('view-details-btn')) {
+                const btn = e.target;
+                document.getElementById('propertyModalLabel').textContent = btn.dataset.title;
+                document.getElementById('modalTitle').textContent = btn.dataset.title;
+                document.getElementById('modalLocation').textContent = btn.dataset.location;
+                document.getElementById('modalBhk').textContent = btn.dataset.bhk;
+                document.getElementById('modalPrice').textContent = btn.dataset.price;
+                document.getElementById('modalDesc').textContent = btn.dataset.desc;
+                document.getElementById('modalImage').src = btn.dataset.image;
+                document.getElementById('whatsappBtn').href = btn.dataset.whatsapp;
+            }
+        });
+    </script>
+</body>
+</html>

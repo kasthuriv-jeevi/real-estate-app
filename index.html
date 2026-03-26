@@ -67,6 +67,64 @@
             flex-direction: column;
             justify-content: space-between;
         }
+        .navbar-toggler {
+            border-color: rgba(255,255,255,0.35);
+        }
+        .navbar-collapse {
+            margin-top: 0.75rem;
+        }
+        @media (max-width: 991.98px) {
+            body {
+                padding-top: 72px !important;
+            }
+            .navbar .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            .navbar-collapse {
+                background: rgba(15, 23, 42, 0.95);
+                border-radius: 16px;
+                padding: 1rem;
+                box-shadow: 0 18px 32px rgba(15, 23, 42, 0.28);
+            }
+            .nav-link {
+                padding: 0.7rem 0;
+            }
+            .hero {
+                min-height: calc(100vh - 72px);
+                padding: 5rem 0 3rem;
+            }
+            .hero h1 {
+                font-size: clamp(2.4rem, 8vw, 3.6rem);
+            }
+            .hero .lead {
+                font-size: 1.1rem;
+            }
+            .featured-card img {
+                height: 200px;
+            }
+        }
+        @media (max-width: 575.98px) {
+            body {
+                padding-top: 68px !important;
+            }
+            .hero {
+                min-height: auto;
+                padding: 4.5rem 0 2.5rem;
+            }
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+            .hero .lead {
+                font-size: 1rem;
+            }
+            .featured-card img {
+                height: 190px;
+            }
+            .btn-lg {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body style="padding-top: 80px !important;">

@@ -22,8 +22,8 @@
         .navbar-brand {
             font-weight: 800;
             font-size: 1.8rem;
-            background: linear-gradient(90deg, #c084fc, #a78bfa);
-            -webkit-text-fill-color: transparent;
+            color: #ffffff !important;
+            letter-spacing: 0.4px;
         }
         .nav-link {
             color: rgba(255,255,255,0.9) !important;
@@ -44,9 +44,9 @@
             height: 70vh;
             min-height: 500px;
             background-image: url('images/home-hero-house.jpg');  /* ← CHANGE THIS to your actual home/contact background image path */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background:
+                linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)),
+                url('images/properties.jpg') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -281,7 +281,7 @@
     <!-- Navbar - fixed-top so it stays on top -->
     <nav class="navbar navbar-expand-lg navbar-dark shadow fixed-top" style="background: linear-gradient(90deg, #1e40af, #3b82f6);">
         <div class="container">
-            <a class="navbar-brand fw-bold fs-4" href="index.html">RealEstate</a>
+            <a class="navbar-brand fw-bold fs-4" href="index.html">Real Estate</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -301,7 +301,7 @@
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="animate__animated animate__fadeInDown">Premium Properties</h1>
+            <h1 class="animate__animated animate__fadeInDown">Real Estate Properties</h1>
             <p class="animate__animated animate__fadeInUp">Discover your dream home in Chennai – premium houses, apartments, villas & plots in prime locations</p>
         </div>
     </section>
